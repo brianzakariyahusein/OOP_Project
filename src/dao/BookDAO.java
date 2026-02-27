@@ -112,4 +112,28 @@ public class BookDAO {
     }
 
     // Delete book
+    public boolean delete(int id) {
+    String sql = "DELETE FROM books WHERE id = ?";
+
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pst = conn.prepareStatement(sql)) {
+
+        pst.setInt(1, id);
+
+        int rowsAffected = pst.executeUpdate();
+
+        if (rowsAffected > 0) {
+            System.out.println("Book deleted successfully!");
+            return true;
+        } else {
+            System.out.println("No book found with that ID.");
+            return false;
+        }
+
+    } catch (SQLException e) {
+        System.out.println("Delete failed: " + e.getMessage());
+        return false;
+    }
+}
+    
 }
