@@ -21,6 +21,7 @@ import java.util.List;
 
 public class BookDAO {
 
+    // Creqte new Book
     public void insert(Book book) {
         String sql = "INSERT INTO books (title, author,category, stock) VALUES (?,?,?,?)";
 
@@ -38,30 +39,49 @@ public class BookDAO {
             System.out.println("Insert failed: " + e.getMessage());
         }
     }
-    
+
+    // List All Book   
     public List<Book> getAll() {
-    List<Book> list = new ArrayList<>();
-    String sql = "SELECT * FROM books";
+        List<Book> list = new ArrayList<>();
+        String sql = "SELECT * FROM books";
 
-    try (Connection conn = DatabaseConnection.getConnection();
-         PreparedStatement pst = conn.prepareStatement(sql);
-         ResultSet rs = pst.executeQuery()) {
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pst = conn.prepareStatement(sql); ResultSet rs = pst.executeQuery()) {
 
-        while (rs.next()) {
-            Book book = new Book();
-            book.setId(rs.getInt("id"));
-            book.setTitle(rs.getString("title"));
-            book.setAuthor(rs.getString("author"));
-            book.setCategory(rs.getString("category"));
-            book.setStock(rs.getInt("stock"));
+            while (rs.next()) {
+                Book book = new Book();
+                book.setId(rs.getInt("id"));
+                book.setTitle(rs.getString("title"));
+                book.setAuthor(rs.getString("author"));
+                book.setCategory(rs.getString("category"));
+                book.setStock(rs.getInt("stock"));
 
-            list.add(book);
+                list.add(book);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Fetch failed: " + e.getMessage());
         }
 
-    } catch (SQLException e) {
-        System.out.println("Fetch failed: " + e.getMessage());
+        return list;
     }
 
-    return list;
-}
+    // Update selected bbook
+    public void update(Book book) {
+        String sql = "UPDATE books SET title=?, author=?, category=?, stock=? WHERE id=?";
+
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pst = conn.prepareStatement(sql)) {
+
+            pst.setString(1, book.getTitle());
+            pst.setString(2, book.getAuthor());
+            pst.setString(3, book.getCategory());
+            pst.setInt(4, book.getStock());
+            pst.setInt(5, book.getId());
+
+            pst.executeUpdate();
+            System.out.println("Book updated successfully!");
+
+        } catch (SQLException e) {
+            System.out.println("Update failed: " + e.getMessage());
+        }
+    }
 }
