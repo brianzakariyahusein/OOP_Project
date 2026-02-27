@@ -15,6 +15,9 @@ import model.Book;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookDAO {
 
@@ -35,5 +38,30 @@ public class BookDAO {
             System.out.println("Insert failed: " + e.getMessage());
         }
     }
+    
+    public List<Book> getAll() {
+    List<Book> list = new ArrayList<>();
+    String sql = "SELECT * FROM books";
 
+    try (Connection conn = DatabaseConnection.getConnection();
+         PreparedStatement pst = conn.prepareStatement(sql);
+         ResultSet rs = pst.executeQuery()) {
+
+        while (rs.next()) {
+            Book book = new Book();
+            book.setId(rs.getInt("id"));
+            book.setTitle(rs.getString("title"));
+            book.setAuthor(rs.getString("author"));
+            book.setCategory(rs.getString("category"));
+            book.setStock(rs.getInt("stock"));
+
+            list.add(book);
+        }
+
+    } catch (SQLException e) {
+        System.out.println("Fetch failed: " + e.getMessage());
+    }
+
+    return list;
+}
 }
