@@ -65,6 +65,32 @@ public class BookDAO {
         return list;
     }
 
+    // Get book by ID
+    public Book getById(int id) {
+        String sql = "SELECT * FROM books WHERE id=?";
+        Book book = null;
+
+        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement pst = conn.prepareStatement(sql)) {
+
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                book = new Book();
+                book.setId(rs.getInt("id"));
+                book.setTitle(rs.getString("title"));
+                book.setAuthor(rs.getString("author"));
+                book.setCategory(rs.getString("category"));
+                book.setStock(rs.getInt("stock"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Fetch by ID failed: " + e.getMessage());
+        }
+
+        return book;
+    }
+
     // Update selected bbook
     public void update(Book book) {
         String sql = "UPDATE books SET title=?, author=?, category=?, stock=? WHERE id=?";
@@ -84,4 +110,6 @@ public class BookDAO {
             System.out.println("Update failed: " + e.getMessage());
         }
     }
+
+    // Delete book
 }
