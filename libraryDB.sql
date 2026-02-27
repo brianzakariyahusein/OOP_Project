@@ -1,0 +1,38 @@
+CREATE DATABASE LibraryDB;
+USE LibraryDB;
+
+CREATE TABLE users (
+id INT PRIMARY KEY AUTO_INCREMENT,
+username VARCHAR(50) UNIQUE,
+password VARCHAR(255),
+role ENUM('ADMIN','STAFF','MEMBER')
+);
+
+CREATE TABLE members (
+id INT PRIMARY KEY AUTO_INCREMENT,
+user_id INT UNIQUE,
+name VARCHAR(100),
+email VARCHAR(100),
+phone VARCHAR(20),
+address TEXT,
+FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+
+CREATE TABLE books (
+id INT PRIMARY KEY AUTO_INCREMENT,
+title VARCHAR(100),
+author VARCHAR(100),
+category VARCHAR(100),
+stock INT
+);
+
+CREATE TABLE borrowings (
+id INT PRIMARY KEY AUTO_INCREMENT,
+member_id INT,
+book_id INT,
+borrow_date DATE,
+return_date DATE,
+status ENUM('BORROWED','RETURNED','LATE'),
+FOREIGN KEY (member_id) REFERENCES members(id),
+FOREIGN KEY (book_id) REFERENCES books(id)
+);
