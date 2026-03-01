@@ -55,6 +55,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnManageMember.addActionListener(this::btnManageMemberActionPerformed);
 
         btnManageBook.setText("Manage Book");
+        btnManageBook.addActionListener(this::btnManageBookActionPerformed);
 
         btnManageTransaction.setText("Manage Transaction");
         btnManageTransaction.addActionListener(this::btnManageTransactionActionPerformed);
@@ -130,6 +131,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         manageMember.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnManageMemberActionPerformed
+
+    private void btnManageBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBookActionPerformed
+        view.manageBookForm manageBook = new view.manageBookForm(loggedInUserId, "admin");
+        manageBook.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManageBookActionPerformed
 
     /**
      * @param args the command line arguments
