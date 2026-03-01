@@ -1,21 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dao;
 
 import config.DatabaseConnection;
 import model.BookModel;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Brian
- */
 public class BookDAO {
 
     public List<BookModel> getAllBooks() {
@@ -29,7 +19,8 @@ public class BookDAO {
                         rs.getString("author"),
                         rs.getString("category"),
                         rs.getInt("year_published"),
-                        rs.getInt("stock")
+                        rs.getInt("stock"),
+                        rs.getTimestamp("created_at")
                 ));
             }
         } catch (Exception e) {
@@ -48,7 +39,6 @@ public class BookDAO {
             ps.setInt(5, book.getStock());
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }
@@ -64,18 +54,16 @@ public class BookDAO {
             ps.setInt(6, book.getBookId());
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }
 
-    public boolean deleteBook(int bookId) {
+    public boolean deleteBook(int id) {
         String sql = "DELETE FROM books WHERE book_id = ?";
         try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, bookId);
+            ps.setInt(1, id);
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
-            e.printStackTrace();
             return false;
         }
     }

@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author Brian
- */
+import java.sql.Timestamp;
+
 public class BookModel {
 
     private int bookId;
@@ -16,10 +10,23 @@ public class BookModel {
     private String category;
     private int yearPublished;
     private int stock;
+    private Timestamp createdAt;
 
     public BookModel() {
     }
 
+    // Konstruktor Lengkap (untuk Load Data)
+    public BookModel(int bookId, String title, String author, String category, int yearPublished, int stock, Timestamp createdAt) {
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.category = category;
+        this.yearPublished = yearPublished;
+        this.stock = stock;
+        this.createdAt = createdAt;
+    }
+
+    // Konstruktor untuk Tambah/Edit
     public BookModel(int bookId, String title, String author, String category, int yearPublished, int stock) {
         this.bookId = bookId;
         this.title = title;
@@ -29,14 +36,7 @@ public class BookModel {
         this.stock = stock;
     }
 
-    public BookModel(String title, String author, String category, int yearPublished, int stock) {
-        this.title = title;
-        this.author = author;
-        this.category = category;
-        this.yearPublished = yearPublished;
-        this.stock = stock;
-    }
-
+    // Getter & Setter
     public int getBookId() {
         return bookId;
     }
@@ -83,5 +83,13 @@ public class BookModel {
 
     public void setStock(int stock) {
         this.stock = stock;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 }

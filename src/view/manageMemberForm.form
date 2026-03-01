@@ -279,7 +279,7 @@
             <Container class="javax.swing.JPanel" name="btnUser">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="d8" green="d8" red="d8" type="rgb"/>
+                  <Color blue="f2" green="f2" red="f2" type="rgb"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[188, 30]"/>
@@ -316,7 +316,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel10">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="d8" green="d8" red="d8" type="rgb"/>
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -353,7 +353,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel11">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="d8" green="d8" red="d8" type="rgb"/>
+                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -399,7 +399,7 @@
             <Container class="javax.swing.JPanel" name="btnMember">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                  <Color blue="d8" green="d8" red="d8" type="rgb"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[188, 30]"/>
@@ -436,7 +436,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel13">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                      <Color blue="d8" green="d8" red="d8" type="rgb"/>
                     </Property>
                   </Properties>
 
@@ -473,7 +473,7 @@
                 <Container class="javax.swing.JPanel" name="jPanel14">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="f2" green="f2" red="f2" type="rgb"/>
+                      <Color blue="d8" green="d8" red="d8" type="rgb"/>
                     </Property>
                   </Properties>
 

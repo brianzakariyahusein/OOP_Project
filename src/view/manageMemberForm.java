@@ -193,7 +193,7 @@ public class manageMemberForm extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        btnUser.setBackground(new java.awt.Color(216, 216, 216));
+        btnUser.setBackground(new java.awt.Color(242, 242, 242));
         btnUser.setMaximumSize(new java.awt.Dimension(188, 30));
         btnUser.setMinimumSize(new java.awt.Dimension(188, 30));
         btnUser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,7 +202,7 @@ public class manageMemberForm extends javax.swing.JFrame {
             }
         });
 
-        jPanel10.setBackground(new java.awt.Color(216, 216, 216));
+        jPanel10.setBackground(new java.awt.Color(242, 242, 242));
 
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/staffIcon.png"))); // NOI18N
@@ -223,7 +223,7 @@ public class manageMemberForm extends javax.swing.JFrame {
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel11.setBackground(new java.awt.Color(216, 216, 216));
+        jPanel11.setBackground(new java.awt.Color(242, 242, 242));
 
         jLabel3.setBackground(new java.awt.Color(216, 216, 216));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -264,7 +264,7 @@ public class manageMemberForm extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        btnMember.setBackground(new java.awt.Color(242, 242, 242));
+        btnMember.setBackground(new java.awt.Color(216, 216, 216));
         btnMember.setMaximumSize(new java.awt.Dimension(188, 30));
         btnMember.setMinimumSize(new java.awt.Dimension(188, 30));
         btnMember.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -273,7 +273,7 @@ public class manageMemberForm extends javax.swing.JFrame {
             }
         });
 
-        jPanel13.setBackground(new java.awt.Color(242, 242, 242));
+        jPanel13.setBackground(new java.awt.Color(216, 216, 216));
 
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/memberIcon.png"))); // NOI18N
@@ -294,7 +294,7 @@ public class manageMemberForm extends javax.swing.JFrame {
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel14.setBackground(new java.awt.Color(242, 242, 242));
+        jPanel14.setBackground(new java.awt.Color(216, 216, 216));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(102, 102, 102));
@@ -810,27 +810,6 @@ public class manageMemberForm extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new manageMemberForm(1, "admin").setVisible(true));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;

@@ -42,17 +42,27 @@ public class AddUserDialog extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        btnSave.setBackground(new java.awt.Color(204, 204, 204));
+        btnSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnSave.setForeground(new java.awt.Color(51, 51, 51));
         btnSave.setText("jButton1");
         btnSave.addActionListener(this::btnSaveActionPerformed);
 
+        cbRole.setBackground(new java.awt.Color(229, 229, 229));
         cbRole.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "admin", "staff" }));
         cbRole.addActionListener(this::cbRoleActionPerformed);
 
+        txtPassword.setBackground(new java.awt.Color(229, 229, 229));
         txtPassword.setText("jPasswordField1");
         txtPassword.addActionListener(this::txtPasswordActionPerformed);
 
+        txtUsername.setBackground(new java.awt.Color(229, 229, 229));
         txtUsername.setText("jTextField1");
+        txtUsername.addActionListener(this::txtUsernameActionPerformed);
 
+        btnCancel.setBackground(new java.awt.Color(204, 204, 204));
+        btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCancel.setForeground(new java.awt.Color(51, 51, 51));
         btnCancel.setText("jButton1");
         btnCancel.addActionListener(this::btnCancelActionPerformed);
 
@@ -134,6 +144,10 @@ public class AddUserDialog extends javax.swing.JDialog {
             javax.swing.JOptionPane.showMessageDialog(this, "Gagal menambah user.");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
     /**
      * @param args the command line arguments
