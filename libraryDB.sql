@@ -1,38 +1,49 @@
-CREATE DATABASE LibraryDB;
-USE LibraryDB;
+CREATE DATABASE libraryDB;
+USE libraryDB;
 
 CREATE TABLE users (
-id INT PRIMARY KEY AUTO_INCREMENT,
-username VARCHAR(50) UNIQUE,
-password VARCHAR(255),
-role ENUM('ADMIN','STAFF','MEMBER')
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'staff') NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE members (
-id INT PRIMARY KEY AUTO_INCREMENT,
-user_id INT UNIQUE,
-name VARCHAR(100),
-email VARCHAR(100),
-phone VARCHAR(20),
-address TEXT,
-FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    member_id INT PRIMARY KEY AUTO_INCREMENT,
+    full_name VARCHAR(100) NOT NULL,
+    address TEXT,
+    phone VARCHAR(20),
+    email VARCHAR(100),
+    created_by INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
+    FOREIGN KEY (created_by) REFERENCES users(user_id)
 );
 
 CREATE TABLE books (
-id INT PRIMARY KEY AUTO_INCREMENT,
-title VARCHAR(100),
-author VARCHAR(100),
-category VARCHAR(100),
-stock INT
+    book_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(150) NOT NULL,
+    author VARCHAR(100),
+    category VARCHAR(100),
+    year_published YEAR,
+    stock INT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE borrowings (
-id INT PRIMARY KEY AUTO_INCREMENT,
-member_id INT,
-book_id INT,
-borrow_date DATE,
-return_date DATE,
-status ENUM('BORROWED','RETURNED','LATE'),
-FOREIGN KEY (member_id) REFERENCES members(id),
-FOREIGN KEY (book_id) REFERENCES books(id)
+CREATE TABLE transactions (
+    transaction_id INT PRIMARY KEY AUTO_INCREMENT,
+    member_id INT NOT NULL,
+    book_id INT NOT NULL,
+    processed_by INT NOT NULL,
+    borrow_date DATE NOT NULL,
+    return_date DATE,
+    status ENUM('borrowed', 'returned') DEFAULT 'borrowed',
+
+    FOREIGN KEY (member_id) REFERENCES members(member_id),
+    FOREIGN KEY (book_id) REFERENCES books(book_id),
+    FOREIGN KEY (processed_by) REFERENCES users(user_id)
 );
+
+INSERT INTO users (username, password, role)
+VALUES ('admin', '123', 'admin');

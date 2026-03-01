@@ -21,7 +21,7 @@ public class MemberDAO {
     public List<MemberModel> getAllMembers() {
         List<MemberModel> list = new ArrayList<>();
         String sql = "SELECT * FROM members";
-        try (Connection conn = DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+        try (Connection conn = config.DatabaseConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 list.add(new MemberModel(
                         rs.getInt("member_id"),
@@ -29,7 +29,8 @@ public class MemberDAO {
                         rs.getString("address"),
                         rs.getString("phone"),
                         rs.getString("email"),
-                        rs.getInt("created_by")
+                        rs.getInt("created_by"),
+                        rs.getTimestamp("created_at") // Ambil datanya di sini
                 ));
             }
         } catch (Exception e) {

@@ -86,9 +86,9 @@ public class StaffDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManageBookActionPerformed
 
     private void btnManageMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMemberActionPerformed
-        view.manageMemberForm manageMember = new view.manageMemberForm(loggedInUserId, "staff");
-        manageMember.setVisible(true);
-        this.dispose();
+//        view.manageMemberForm manageMember = new view.manageMemberForm(loggedInUserId, "staff");
+//        manageMember.setVisible(true);
+//        this.dispose();
     }//GEN-LAST:event_btnManageMemberActionPerformed
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed

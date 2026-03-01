@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author Brian
- */
+import java.sql.Timestamp;
+
 public class MemberModel {
 
     private int memberId;
@@ -16,10 +10,23 @@ public class MemberModel {
     private String phone;
     private String email;
     private int createdBy;
+    private Timestamp createdAt;
 
     public MemberModel() {
     }
 
+    // Konstruktor LENGKAP (Biasanya dipake pas ambil data dari database/DAO)
+    public MemberModel(int memberId, String fullName, String address, String phone, String email, int createdBy, Timestamp createdAt) {
+        this.memberId = memberId;
+        this.fullName = fullName;
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.createdBy = createdBy; // Tadi kamu tulis 'created' (salah)
+        this.createdAt = createdAt;
+    }
+
+    // Konstruktor untuk EDIT (Tanpa Timestamp)
     public MemberModel(int memberId, String fullName, String address, String phone, String email, int createdBy) {
         this.memberId = memberId;
         this.fullName = fullName;
@@ -29,14 +36,16 @@ public class MemberModel {
         this.createdBy = createdBy;
     }
 
+    // Konstruktor untuk TAMBAH BARU (Tanpa ID dan Tanpa Timestamp)
     public MemberModel(String fullName, String address, String phone, String email, int createdBy) {
         this.fullName = fullName;
         this.address = address;
         this.phone = phone;
         this.email = email;
-        this.createdBy = createdBy;
+        this.createdBy = createdBy; // Tadi kamu tulis 'userId' (salah)
     }
 
+    // Getter dan Setter tetap sama di bawah...
     public int getMemberId() {
         return memberId;
     }
@@ -83,5 +92,13 @@ public class MemberModel {
 
     public void setCreatedBy(int createdBy) {
         this.createdBy = createdBy;
+    }
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
     }
 }
