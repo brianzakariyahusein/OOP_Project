@@ -180,7 +180,7 @@ public class manageBookForm extends javax.swing.JFrame {
     }//GEN-LAST:event_tblBookMouseClicked
 
     private void jScrollPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane2MouseClicked
-
+        
     }//GEN-LAST:event_jScrollPane2MouseClicked
 
     private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
@@ -252,7 +252,8 @@ public class manageBookForm extends javax.swing.JFrame {
             view.AdminDashboard adminDash = new view.AdminDashboard(loggedInUserId);
             adminDash.setVisible(true);
         } else if (userRole.equals("staff")) {
-            javax.swing.JOptionPane.showMessageDialog(this, "Nanti diarahkan ke Dashboard Staff kalau sudah jadi");
+            view.StaffDashboard staffDash = new view.StaffDashboard(loggedInUserId);
+            staffDash.setVisible(true);
         }
         this.dispose();
     }//GEN-LAST:event_btnBackActionPerformed

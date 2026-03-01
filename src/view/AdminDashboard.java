@@ -111,7 +111,9 @@ public class AdminDashboard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageTransactionActionPerformed
-        // TODO add your handling code here:
+        view.manageTransactionForm manageTransaction = new view.manageTransactionForm(loggedInUserId, "admin");
+        manageTransaction.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnManageTransactionActionPerformed
 
     private void btnManageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUserActionPerformed

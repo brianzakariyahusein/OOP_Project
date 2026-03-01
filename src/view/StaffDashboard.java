@@ -9,14 +9,16 @@ package view;
  * @author Brian
  */
 public class StaffDashboard extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(StaffDashboard.class.getName());
+    private int loggedInUserId;
 
     /**
      * Creates new form StaffDashboard
      */
-    public StaffDashboard() {
+    public StaffDashboard(int userId) {
         initComponents();
+        this.loggedInUserId = userId;
     }
 
     /**
@@ -28,21 +30,78 @@ public class StaffDashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnManageBook = new javax.swing.JButton();
+        btnManageMember = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        btnManageTransaction = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnManageBook.setText("Manage Book");
+        btnManageBook.addActionListener(this::btnManageBookActionPerformed);
+
+        btnManageMember.setText("Manage Member");
+        btnManageMember.addActionListener(this::btnManageMemberActionPerformed);
+
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(this::btnLogoutActionPerformed);
+
+        btnManageTransaction.setText("Manage Transaction");
+        btnManageTransaction.addActionListener(this::btnManageTransactionActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnManageTransaction, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManageMember, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnManageBook, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(579, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(112, 112, 112)
+                .addComponent(btnManageMember)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnManageBook)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnManageTransaction)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLogout)
+                .addContainerGap(260, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnManageBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageBookActionPerformed
+        view.manageBookForm manageBook = new view.manageBookForm(loggedInUserId, "staff");
+        manageBook.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManageBookActionPerformed
+
+    private void btnManageMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMemberActionPerformed
+        view.manageMemberForm manageMember = new view.manageMemberForm(loggedInUserId, "staff");
+        manageMember.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManageMemberActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        view.LoginView login = new view.LoginView();
+        login.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnManageTransactionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageTransactionActionPerformed
+        view.manageTransactionForm manageTransaction = new view.manageTransactionForm(loggedInUserId, "staff");
+        manageTransaction.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManageTransactionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -66,9 +125,13 @@ public class StaffDashboard extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new StaffDashboard().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new StaffDashboard(2).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnManageBook;
+    private javax.swing.JButton btnManageMember;
+    private javax.swing.JButton btnManageTransaction;
     // End of variables declaration//GEN-END:variables
 }

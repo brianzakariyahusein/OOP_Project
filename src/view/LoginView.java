@@ -109,7 +109,9 @@ public class LoginView extends javax.swing.JFrame {
                 adminDash.setVisible(true);
                 this.dispose();
             } else if (user.getRole().equals("staff")) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Dashboard Staff belum tersedia");
+                view.StaffDashboard staffDash = new view.StaffDashboard(user.getUserId());
+                staffDash.setVisible(true);
+                this.dispose();
             }
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Username / Password salah!");
