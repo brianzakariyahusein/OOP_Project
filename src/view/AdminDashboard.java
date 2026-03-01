@@ -9,14 +9,16 @@ package view;
  * @author Brian
  */
 public class AdminDashboard extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminDashboard.class.getName());
+    private int loggedInUserId;
 
     /**
      * Creates new form AdminDashboard
      */
-    public AdminDashboard() {
+    public AdminDashboard(int userId) {
         initComponents();
+        this.loggedInUserId = userId;
     }
 
     /**
@@ -50,6 +52,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         btnLogout.addActionListener(this::btnLogoutActionPerformed);
 
         btnManageMember.setText("Manage Member");
+        btnManageMember.addActionListener(this::btnManageMemberActionPerformed);
 
         btnManageBook.setText("Manage Book");
 
@@ -111,7 +114,7 @@ public class AdminDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnManageTransactionActionPerformed
 
     private void btnManageUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageUserActionPerformed
-        view.manageUserForm manageUser = new view.manageUserForm();
+        view.manageUserForm manageUser = new view.manageUserForm(loggedInUserId, "admin");
         manageUser.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnManageUserActionPerformed
@@ -119,8 +122,14 @@ public class AdminDashboard extends javax.swing.JFrame {
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         view.LoginView login = new view.LoginView();
         login.setVisible(true);
-        this.dispose();;
+        this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
+
+    private void btnManageMemberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageMemberActionPerformed
+        view.manageMemberForm manageMember = new view.manageMemberForm(loggedInUserId, "admin");
+        manageMember.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnManageMemberActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,7 +153,7 @@ public class AdminDashboard extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AdminDashboard().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AdminDashboard(1).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

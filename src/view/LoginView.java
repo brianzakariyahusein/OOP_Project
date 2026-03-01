@@ -105,7 +105,7 @@ public class LoginView extends javax.swing.JFrame {
 
         if (user != null) {
             if (user.getRole().equals("admin")) {
-                view.AdminDashboard adminDash = new view.AdminDashboard();
+                view.AdminDashboard adminDash = new view.AdminDashboard(user.getUserId());
                 adminDash.setVisible(true);
                 this.dispose();
             } else if (user.getRole().equals("staff")) {
