@@ -44,58 +44,33 @@ public class TransactionDAO {
     }
 
     public boolean borrowBook(TransactionModel trans) {
-        Connection conn = null;
-        try {
-            conn = DatabaseConnection.getConnection();
-            conn.setAutoCommit(false);
+        String sqlInsert = "INSERT INTO transactions (member_id, book_id, processed_by, borrow_date, status) VALUES (?, ?, ?, CURDATE(), 'borrowed')";
+        String sqlUpdate = "UPDATE books SET stock = stock - 1 WHERE book_id = ? AND stock > 0";
 
-            String cekStokSql = "SELECT stock FROM books WHERE book_id = ?";
-            try (PreparedStatement psCek = conn.prepareStatement(cekStokSql)) {
-                psCek.setInt(1, trans.getBookId());
-                try (ResultSet rs = psCek.executeQuery()) {
-                    if (rs.next() && rs.getInt("stock") > 0) {
+        try (Connection conn = config.DatabaseConnection.getConnection()) {
+            // 1. Masukin data transaksi
+            try (PreparedStatement psInsert = conn.prepareStatement(sqlInsert)) {
+                psInsert.setInt(1, trans.getMemberId());
+                psInsert.setInt(2, trans.getBookId());
+                psInsert.setInt(3, trans.getProcessedBy());
+                int rowsTrans = psInsert.executeUpdate();
 
-                        String insertTransSql = "INSERT INTO transactions (member_id, book_id, processed_by, borrow_date, status) VALUES (?, ?, ?, CURDATE(), 'borrowed')";
-                        try (PreparedStatement psInsert = conn.prepareStatement(insertTransSql)) {
-                            psInsert.setInt(1, trans.getMemberId());
-                            psInsert.setInt(2, trans.getBookId());
-                            psInsert.setInt(3, trans.getProcessedBy());
-                            psInsert.executeUpdate();
+                if (rowsTrans > 0) {
+                    // 2. Langsung hajar update stok tanpa commit-commit-an dulu buat ngetes
+                    try (PreparedStatement psUpdate = conn.prepareStatement(sqlUpdate)) {
+                        psUpdate.setInt(1, trans.getBookId());
+                        int rowsStock = psUpdate.executeUpdate();
+
+                        if (rowsStock > 0) {
+                            return true; // Berhasil keduanya
                         }
-
-                        String updateBookSql = "UPDATE books SET stock = stock - 1 WHERE book_id = ?";
-                        try (PreparedStatement psUpdate = conn.prepareStatement(updateBookSql)) {
-                            psUpdate.setInt(1, trans.getBookId());
-                            psUpdate.executeUpdate();
-                        }
-
-                        conn.commit();
-                        return true;
-                    } else {
-                        return false;
                     }
                 }
             }
         } catch (Exception e) {
-            if (conn != null) {
-                try {
-                    conn.rollback();
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
-                }
-            }
             e.printStackTrace();
-            return false;
-        } finally {
-            if (conn != null) {
-                try {
-                    conn.setAutoCommit(true);
-                    conn.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-            }
         }
+        return false;
     }
 
     public boolean returnBook(int transactionId) {
