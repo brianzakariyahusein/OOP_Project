@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 import java.sql.Date;
 
-/**
- *
- * @author Brian
- */
 public class TransactionModel {
 
     private int transactionId;
@@ -20,15 +12,11 @@ public class TransactionModel {
     private Date returnDate;
     private String status;
 
-    public TransactionModel() {
-    }
+    private String memberName;
+    private String bookTitle;
+    private String processedByName;
 
-    public TransactionModel(int memberId, int bookId, int processedBy, Date borrowDate, String status) {
-        this.memberId = memberId;
-        this.bookId = bookId;
-        this.processedBy = processedBy;
-        this.borrowDate = borrowDate;
-        this.status = status;
+    public TransactionModel() {
     }
 
     public TransactionModel(int transactionId, int memberId, int bookId, int processedBy, Date borrowDate, Date returnDate, String status) {
@@ -95,5 +83,29 @@ public class TransactionModel {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getMemberName() {
+        return memberName;
+    }
+
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public String getBookTitle() {
+        return bookTitle;
+    }
+
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
+    }
+
+    public String getProcessedByName() {
+        return processedByName;
+    }
+
+    public void setProcessedByName(String processedByName) {
+        this.processedByName = processedByName;
     }
 }
